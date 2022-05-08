@@ -1,15 +1,19 @@
 // Assignment code here
 
 // Add all characters
-var lettersHigh = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-var lettersLow = "abcdefghijklmnopqrstuvwxyz";
+var lettersUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var lettersLower = "abcdefghijklmnopqrstuvwxyz";
 var numbers = "0123456789";
 var symbols = "!@#$%^&*_=+-";
+
 //Click the button to start password generator
+
+
+
+// var pwdGen = function () {
 
 //Generate first prompt to ask the length of password. 
 //Have user choose between 8 and 128 characters
-// var pwdGen = function () {
 
 var prompt1 = function() {  
   // check how many characters
@@ -26,8 +30,178 @@ else {
   window.confirm("You have chosen " + promptLength + " characters");
   }
 }
+//end prompt 1
 
-prompt1 ();
+//being prompt2
+
+//Have user choose between character type (uppercase, lowercase, numbers and/or symbols)
+
+var prompt2 = function() {  
+  
+  var confirmUpper = window.prompt("What type(s) of characters would you like to use? (you must choose at least 1) Would you like to choose UPPERCASE? Type YES or NO");
+
+if (confirmUpper === "" || confirmUpper === null) {
+  window.alert("You need to provide a valid answer! Please try again.");
+
+  // use return to call it again and stop the rest of this function from running
+  return prompt2();
+  }
+
+// else {
+//   window.confirm("You have chosen " + promptChar + " characters");
+//   }
+
+  // convert promptFight to all lowercase so we can check with less options
+
+
+  confirmUpper = confirmUpper.toLowerCase();
+
+  // if (confirmUpper) {
+  //   // if true
+  //   alert("You have chosen UPPERCASE");
+  // } else {
+  //   // if false
+  //   alert("You have declined UPPERCASE");
+  // }
+  if (confirmUpper === "yes") {
+    // confirm player wants uppercase
+    // var confirmUpper = window.confirm("Are you sure you'd like to quit?");
+    window.alert("You have chosen to use UPPERCASE");
+   }
+    // if yes (true), leave fight
+    else {
+      window.alert("You have declined to use UPPERCASE");
+    }
+  }
+  // confirmUpper();
+  //end prompt2
+
+  //begin prompt3
+
+  var prompt3 = function() {  
+  
+    var confirmLower = window.prompt("Would you like to choose lowerCASE? Type YES or NO");
+  
+  if (confirmLower === "" || confirmLower === null) {
+    window.alert("You need to provide a valid answer! Please try again.");
+  
+    // use return to call it again and stop the rest of this function from running
+    return prompt3();
+    }
+  
+    // convert confirmLower to all lowercase so we can check with less options
+    confirmLower = confirmLower.toLowerCase();
+
+    if (confirmLower === "yes") {
+      // confirm player wants lowercase
+      
+      window.alert("You have chosen to use lowerCASE");
+     }
+      // if yes (true), leave fight
+      else {
+        window.alert("You have declined to use lowercaseCASE");
+      }
+  }
+    //end prompt3
+
+    //begin prompt4
+    var prompt4 = function() {  
+  
+      var confirmNum = window.prompt("Would you like to choose NUMBERS? Type YES or NO");
+    
+    if (confirmNum === "" || confirmNum === null) {
+      window.alert("You need to provide a valid answer! Please try again.");
+    
+      // use return to call it again and stop the rest of this function from running
+      return prompt4();
+      }
+    
+      // convert confirmNum to all lowercase so we can check with less options
+      confirmNum = confirmNum.toLowerCase();
+    
+      if (confirmNum === "yes") {
+        // confirm player wants numbers
+       
+        window.alert("You have chosen to use NUMBERS");
+       }
+        // if yes (true), leave fight
+        else {
+          window.alert("You have declined to use NUMBERS");
+      }    
+  } 
+    //end prompt4
+
+    //being prompt5
+    var prompt5 = function() {  
+  
+      var confirmSym = window.prompt("Would you like to choose SPECIAL CHARACTERS? (ex !@#$%&*=+-) Type YES or NO");
+    
+    if (confirmSym === "" || confirmSym === null) {
+      window.alert("You need to provide a valid answer! Please try again.");
+    
+      // use return to call it again and stop the rest of this function from running
+      return prompt5();
+      }
+    
+      // convert confirmNum to all lowercase so we can check with less options
+      confirmSym = confirmSym.toLowerCase();
+    
+      if (confirmSym === "yes") {
+        // confirm player wants special characters
+        
+        window.alert("You have chosen to use SPECIAL CHARACTERS");
+       }
+        // if yes (true), leave fight
+        else {
+          window.alert("You have declined to use SPECIAL CHARACTERS");
+        }    
+  } 
+  // var pwdTxt = document.getElementById("password");
+  // var length = document.getElementById("length");
+  // var incNumbers = document.getElementById("numbers");
+  // var incSymbols = document.getElementById("symbols");
+  // var generateBtn = document.getElementById("generate");
+  // generateBtn.addEventListener("click", () => {
+  //   let characters = lettersUpper;
+  //   incNumbers.checked ? (characters += numbers) : "";
+  //   incSymbols.checked ? (characters += symbols) : "";
+  //   passwordTxt.value = generatePassword(length.value, characters);
+  // });
+var firstNameInput = document.querySelector("#first-name");
+var lastNameInput = document.querySelector("#last-name");
+var emailInput = document.querySelector("#email");
+var passwordInput = document.querySelector("#password");
+var signUpButton = document.querySelector("#sign-up");
+
+signUpButton.addEventListener("click", function(event) {
+  event.preventDefault();
+  
+  var user = {
+    firstName: firstNameInput.value.trim(),
+    lastName: lastNameInput.value.trim(),
+    email: emailInput.value.trim(),
+    password: passwordInput.value.trim()
+  };
+
+  // set new submission to local storage 
+  localStorage.setItem(user);
+});
+  const generatePassword = (length, characters) => {
+    let password = "";
+    for (let i = 0; i < length; i++) {
+      password += characters.charAt(
+        Math.floor(Math.random() * characters.length)
+      );
+    }
+    return password;
+  };
+
+
+prompt1();
+prompt2();
+prompt3();
+prompt4();
+prompt5();
 // pwdGen ();
 
 
