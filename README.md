@@ -1,5 +1,8 @@
 # Password Generator Starter Code
 
+Built with
+HTML, CSS, JavaScript
+
 User Story-
 
 AS AN employee with access to sensitive data
@@ -23,3 +26,8 @@ WHEN all prompts are answered
 THEN a password is generated that matches the selected criteria
 WHEN the password is generated
 THEN the password is either displayed in an alert or written to the page
+
+Assets
+
+The following link will take you to the website:
+https://craig-jh.github.io/password-generator/
