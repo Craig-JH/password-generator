@@ -6,28 +6,31 @@ var symbolString = "!@#$%^&*_=+-";
 
 // function genPass(){
 //begin prompt1
+//give function names to indicate what it is doing
 var prompt1 = function() {  
   // check how many characters
   var confirmLength = window.prompt("How many characters in length would you like your password to be? Please choose a value between 8 and 128 characters.");
+    //use truthy and falsey (!), check if actually a number, validate it is infact a number
+    //convert any input to string to number data type, validate with isNaN
+    if (confirmLength === "" || confirmLength === null || confirmLength < 8 || confirmLength > 128) {
+      window.alert("You need to enter a value bewteen 8 and 128 characters! Please try again.");
 
-if (confirmLength === "" || confirmLength === null || confirmLength < 8 || confirmLength > 128) {
-  window.alert("You need to enter a value bewteen 8 and 128 characters! Please try again.");
+      // use return to call it again and stop the rest of this function from running
+      return prompt1();
+      }
 
-  // use return to call it again and stop the rest of this function from running
-  return prompt1();
-  }
+    else {
+      window.confirm("You have chosen " + confirmLength + " characters");
+      }
 
-else {
-  window.confirm("You have chosen " + confirmLength + " characters");
-  }
-
-var x = confirmLength;
-var passLengthMin = x >= 8;
-var passLengthMax = x <= 128;
-
-if (passLengthMin && passLengthMax) {
-  console.log(x);
-}
+    var x = confirmLength;
+    var passLengthMin = x >= 8;
+    var passLengthMax = x <= 128;
+//line 30 and 31 not really necessary
+    if (passLengthMin && passLengthMax) {
+      console.log(x);
+    }
+    return confirmLength;
 }
 
 //end prompt 1
@@ -112,9 +115,10 @@ var prompt2 = function() {
 
     //being prompt5
     var prompt5 = function() {  
-  
+  //change prompts to yes or no (ok, cancel). That way user doesnt have to type in yes or no
       var confirmSym = window.prompt("Would you like to choose SPECIAL CHARACTERS? (ex !@#$%&*=+-) Type YES or NO");
     
+      //use "not equal to confirmSym"
     if (confirmSym === "" || confirmSym === null) {
       window.alert("You need to provide a valid answer! Please try again.");
     
@@ -138,13 +142,34 @@ var prompt2 = function() {
 
 
 
-  // var getRandom = function() 
-  //   var value = Math.floor(Math.random() * (characters.length)
+//   var password=document.getElementById("password");
+
+ function genPassword() {
+    var chars = "0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    var passwordLength = prompt1();
+    console.log(passwordLength);
+//     var password = "";
+//  for (var i = 0; i <= passwordLength; i++) {
+//    var randomNumber = Math.floor(Math.random() * chars.length);
+//    password += chars.substring(randomNumber, randomNumber +1);
+//   }
+//         document.getElementById("password").value = password;
+ }
+ var generateBtn = document.getElementById("generate");
+ generateBtn.addEventListener("click", genPassword );
+ 
+// save copy for later
+// function copyPassword() {
+//   var copyText = document.getElementById("password");
+//   copyText.select();
+//   document.execCommand("copy");  
+// }
+//  }
   
 
-prompt1();
-prompt2();
-prompt3();
-prompt4();
-prompt5();
+// prompt1();
+// prompt2();
+// prompt3();
+// prompt4();
+// prompt5();
 // genPass();
